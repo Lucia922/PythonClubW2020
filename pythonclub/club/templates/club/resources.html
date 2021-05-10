@@ -5,11 +5,13 @@
     <tr>
         <th>Name</th>
         <th>Description</th>
+        <th>Url</th>
     </tr>
     {% for r in resource_list %}
       <tr>
           <td>{{ r.resourcename}}</td>
           <td>{{ r.resourcedescription}}</td>
+          <td>{{ r.resourceurl}}</td>
       </tr>
     {% endfor %}
 </table>
