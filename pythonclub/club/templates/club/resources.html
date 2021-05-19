@@ -4,14 +4,12 @@
 <table class='table'>
     <tr>
         <th>Name</th>
-        <th>Description</th>
-        <th>Url</th>
+        <th>Added by</th>
     </tr>
     {% for r in resource_list %}
       <tr>
-          <td>{{ r.resourcename}}</td>
-          <td>{{ r.resourcedescription}}</td>
-          <td>{{ r.resourceurl}}</td>
+          <td><a href=" {% url 'resourcedetail' id=r.id %} ">{{ r.resourcename }}</a></td>
+          <td>{{ r.userid }}</td>
       </tr>
     {% endfor %}
 </table>
