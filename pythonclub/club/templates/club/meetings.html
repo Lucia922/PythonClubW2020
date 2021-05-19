@@ -4,16 +4,12 @@
 <table class='table'>
     <tr>
         <th>Title</th>
-        <th>Time</th>
         <th>Location</th>
-        <th>Agenda</th>
     </tr>
     {% for m in meeting_list %}
       <tr>
-          <td>{{ m.meetingtitle}}</td>
-          <td>{{ m.meetingtime}}</td>
+          <td><a href="{% url 'meetingdetail' id=m.id %}">{{ m.meetingtitle}}</a></td>
           <td>{{ m.meetinglocation}}</td>
-          <td>{{ m.meetingagenda}}</td>
       </tr>
     {% endfor %}
 </table>
