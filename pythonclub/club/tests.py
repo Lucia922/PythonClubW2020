@@ -52,7 +52,7 @@ class MeetingMinutesTest(TestCase):
     def test_table(self):
         self.assertEqual(str(MeetingMinutes._meta.db_table), 'meetingminutes')
 
-
+# Ran 8 tests and OK
 
 
 
