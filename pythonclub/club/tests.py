@@ -104,7 +104,7 @@ class NewMeetingForm(TestCase):
         form=MeetingForm (data)
         self.assertTrue(form.is_valid)
 
-    
+#Ran 12 tests and OK
 
 
 
