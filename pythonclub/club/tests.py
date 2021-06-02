@@ -2,6 +2,8 @@ from django.test import TestCase
 from django.contrib.auth.models import User
 from .models import Meeting, MeetingMinutes, Resource, Event
 import datetime
+from .forms import ResourceForm
+from .forms import MeetingForm
 
 # Create your tests here.
 class MeetingTest(TestCase):
@@ -53,6 +55,56 @@ class MeetingMinutesTest(TestCase):
         self.assertEqual(str(MeetingMinutes._meta.db_table), 'meetingminutes')
 
 # Ran 8 tests and OK
+
+class NewResourceForm(TestCase):
+    #valid form date
+    def test_resourceform(self):
+        data={
+                'resourcename': "Welcome to Python.org", 
+                'resourcetype': "Url", 'resourceurl': "https://www.python.org/", 
+                'resourcedateentered': "2021-5-10", 
+                'userid': "Darya", 
+                'resourcedescription': "The official home of the Python Programming Language."
+            }
+        form=ResourceForm (data)
+        self.assertTrue(form.is_valid)
+
+    def test_resourceform_Invalid(self):
+        data={
+                'resourcename': "Welcome to Python.org", 
+                'resourcetype': "Url", 'resourceurl': "https://www.python.org/", 
+                'resourcedateentered': "2021-05-10", 
+                'userid': "Darya", 
+                'resourcedescription': "The official home of the Python Programming Language."
+            }
+        form=ResourceForm (data)
+        self.assertTrue(form.is_valid)
+
+class NewMeetingForm(TestCase):
+    #valid form date
+    def test_meetingform(self):
+        data={
+                'meetingtitle': "Python Block Party", 
+                'meetingdate': "2021-06-03",  
+                'meetingtime': "03/06/2021 18:00:00", 
+                'meetinglocation': "Capitol Hill", 
+                'meetingagenda': "In person meeting"
+            }
+        form=MeetingForm (data)
+        self.assertTrue(form.is_valid)
+
+    def test_meetingform_Invalid(self):
+        data={
+                'meetingtitle': "Python Block Party", 
+                'meetingdate': "2021-6-03",  
+                'meetingtime': "03/06/2021 18:00:00", 
+                'meetinglocation': "Capitol Hill", 
+                'meetingagenda': "In person meeting"
+            }
+        form=MeetingForm (data)
+        self.assertTrue(form.is_valid)
+
+    
 
 
 
