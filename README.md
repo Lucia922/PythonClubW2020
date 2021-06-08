@@ -1,2 +1,2 @@
 # PythonClubW2020
-Django Project for IT 112 Web Programming W/Python Spring 2021
+Django Project for IT 112 - S21 Web Programming with Python 
