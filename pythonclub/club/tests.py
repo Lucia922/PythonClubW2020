@@ -118,7 +118,7 @@ class New_Resource_Authentication_Test(TestCase):
 
 #Couldn't pass test with "test_redirect_if_not_logged_in" 
 #got a message "AssertionError: 200 != 302 : Response didn't redirect as expected: Response code was 200 (expected 302)"
-#Asked google, and changed with "test_user_enters_valid_date"
+#Asked google, and changed to "test_user_enters_valid_date"
 #Google said "In your test 'test_user_enters_valid_data', 
 #you are passing the password as self.user.password. 
 #This will be the SHA of the password because Django stores the sha of password on db. 
