@@ -4,6 +4,7 @@ from .models import Meeting, MeetingMinutes, Resource, Event
 import datetime
 from .forms import ResourceForm
 from .forms import MeetingForm
+from django.urls import reverse_lazy, reverse
 
 # Create your tests here.
 class MeetingTest(TestCase):
@@ -105,6 +106,31 @@ class NewMeetingForm(TestCase):
         self.assertTrue(form.is_valid)
 
 #Ran 12 tests and OK
+
+class New_Resource_Authentication_Test(TestCase):
+    def setUp(self):
+        self.test_user=User.objects.create_user(username='Darya', password='zhopka#0316')
+        self.name=Resource.objects.create(resourcename='Welcome to Python.org',
+        resourcetype='Url', resourceurl='https://www.python.org/',
+        resourcedateentered=datetime.date(2021,5,10),
+        userid=self.test_user,
+        resourcedescription='The official home of the Python Programming Language.')
+      
+    def test_user_enters_valid_date(self):
+        response=self.client.post(reverse('login'),{'username': self.test_user, 'password':'zhopka#0316'}, follow=True)
+
+    def test_Logged_in_uses_correct_template(self):
+        login=self.client.login(username='Darya', password='zhopka#0316')
+        response=self.client.get(reverse('newresource'))
+        self.assertEqual(str(response.context['user']), 'Darya')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'club/newresource.html')
+
+#Ran 14 tests and OK
+
+          
+
+
 
 
 
